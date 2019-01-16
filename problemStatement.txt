@@ -1,0 +1,26 @@
+Create a repository on github named "python-build" and send us the link. you will upload your work to this repo.
+
+Dataset selection:
+Use: https://github.com/buildforbharat/datasets
+infy_stock.csv: Source OCLHV data for NSE stocks (INFY) between 2015-2016. Data level - Daily.
+nifty_it_index.csv: Source OCLHV data for NIFTY IT index. Data level - Daily.
+
+Part 1:
+1. Load this data into Mysql. Please write a python script for this. do NOT use raw SQL. You can use pymysql or sqlalchemy or any library.
+2. Using SQL, Create 4,16,....,52 week moving average(closing price) for each stock and index.
+3. Create rolling window of size 10 on each stock/index. Remember that MySQL lacks window functions, but you can do a similar computation using self-joins (or any other method).
+
+Part 2:
+1. All subsequent questions from this point will be done by reading from mysql into python+pandas (the tables you created previously) . You will no longer read from CSV files or do this in raw SQL. We will run your python code and see if you are loading it appropriately.
+2. Create 4,16,....,52 week moving average(closing price) for each stock and index. This should happen through a function.
+3. Create rolling window of size 10 on each stock/index. Handle unequal time series due to stock market holidays. 
+4. Create the following dummy time series:
+   4.1 Volume shocks - If volume traded is 10% higher/lower than previous day - make a 0/1 boolean time series for shock, 0/1 dummy-coded time series for direction of shock.
+   4.2 Price shocks - If closing price at T vs T+1 has a difference > 2%, then 0/1 boolean time series for shock, 0/1 dummy-coded time series for direction of shock.
+
+Part 3 (data visualization ):
+For this section, you can use only bokeh. https://bokeh.pydata.org/en/latest/docs/gallery.html
+1. Create timeseries plot of close prices of stocks/indices with the following features:
+2. Color timeseries in simple blue color.
+3. Color timeseries between two volume shocks in a different color (Red)
+4. Gradient color in blue spectrum based on difference of 52 week moving average.
